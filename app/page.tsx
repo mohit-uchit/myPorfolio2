@@ -1,9 +1,9 @@
-"use client"
+'use client';
 
-import type React from "react"
+import type React from 'react';
 
-import { useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   Code,
   Server,
@@ -33,40 +33,40 @@ import {
   Mail,
   Phone,
   Linkedin,
-} from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import Image from "next/image"
+} from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import Image from 'next/image';
 
 function TypewriterText() {
-  const [text, setText] = useState("")
-  const [currentIndex, setCurrentIndex] = useState(0)
+  const [text, setText] = useState('');
+  const [currentIndex, setCurrentIndex] = useState(0);
   const phrases = [
-    "> initializing_system...",
-    "> loading_neural_networks...",
-    "> scanning_vulnerabilities...",
-    "> deploying_microservices...",
-    "> optimizing_database_queries...",
-    "> securing_api_endpoints...",
-    "> penetration_testing_active...",
-    "> system_ready_for_deployment...",
-  ]
+    '> initializing_system...',
+    '> loading_neural_networks...',
+    '> scanning_vulnerabilities...',
+    '> deploying_microservices...',
+    '> optimizing_database_queries...',
+    '> securing_api_endpoints...',
+    '> penetration_testing_active...',
+    '> system_ready_for_deployment...',
+  ];
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const currentPhrase = phrases[currentIndex]
+      const currentPhrase = phrases[currentIndex];
       if (text.length < currentPhrase.length) {
-        setText(currentPhrase.slice(0, text.length + 1))
+        setText(currentPhrase.slice(0, text.length + 1));
       } else {
         setTimeout(() => {
-          setText("")
-          setCurrentIndex((prev) => (prev + 1) % phrases.length)
-        }, 2000)
+          setText('');
+          setCurrentIndex(prev => (prev + 1) % phrases.length);
+        }, 2000);
       }
-    }, 80)
+    }, 80);
 
-    return () => clearInterval(interval)
-  }, [text, currentIndex, phrases])
+    return () => clearInterval(interval);
+  }, [text, currentIndex, phrases]);
 
   return (
     <div className="relative">
@@ -82,7 +82,7 @@ function TypewriterText() {
       </span>
       <div className="absolute -inset-1 bg-blue-400/10 blur-sm rounded opacity-30"></div>
     </div>
-  )
+  );
 }
 
 function FloatingParticles() {
@@ -110,16 +110,16 @@ function FloatingParticles() {
         />
       ))}
     </div>
-  )
+  );
 }
 
 function CodeBlock() {
   const codeLines = [
-    "const mohit = new BackendEngineer();",
+    'const mohit = new BackendEngineer();',
     "mohit.skills = ['Node.js', 'Redis', 'MySQL'];",
     "mohit.deploy('production');",
     "console.log('System Online ✓');",
-  ]
+  ];
 
   return (
     <motion.div
@@ -131,8 +131,9 @@ function CodeBlock() {
                  lg:text-sm lg:max-w-xs
                  transform-gpu perspective-1000"
       style={{
-        transform: "rotateX(5deg) rotateY(-5deg)",
-        boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05)",
+        transform: 'rotateX(5deg) rotateY(-5deg)',
+        boxShadow:
+          '0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05)',
       }}
     >
       <div className="flex items-center space-x-2 mb-3">
@@ -156,10 +157,18 @@ function CodeBlock() {
         </motion.div>
       ))}
     </motion.div>
-  )
+  );
 }
 
-function ProgressBar({ skill, progress, color }: { skill: string; progress: number; color: string }) {
+function ProgressBar({
+  skill,
+  progress,
+  color,
+}: {
+  skill: string;
+  progress: number;
+  color: string;
+}) {
   return (
     <div className="mb-6">
       <div className="flex justify-between items-center mb-3">
@@ -174,10 +183,11 @@ function ProgressBar({ skill, progress, color }: { skill: string; progress: numb
           className={`h-3 rounded-full ${color} relative overflow-hidden shadow-lg`}
           initial={{ width: 0 }}
           whileInView={{ width: `${progress}%` }}
-          transition={{ duration: 2, ease: "easeOut" }}
+          transition={{ duration: 2, ease: 'easeOut' }}
           viewport={{ once: true }}
           style={{
-            boxShadow: "inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.3)",
+            boxShadow:
+              'inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.3)',
           }}
         >
           <motion.div
@@ -188,192 +198,216 @@ function ProgressBar({ skill, progress, color }: { skill: string; progress: numb
         </motion.div>
       </div>
     </div>
-  )
+  );
 }
 
 export default function Portfolio() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [activeSection, setActiveSection] = useState("home")
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY })
-    }
-    window.addEventListener("mousemove", handleMouseMove)
-    return () => window.removeEventListener("mousemove", handleMouseMove)
-  }, [])
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
 
   const navItems = [
-    { id: "home", label: "Home" },
-    { id: "about", label: "About" },
-    { id: "experience", label: "Experience" },
-    { id: "services", label: "Services" },
-    { id: "projects", label: "Projects" },
-    { id: "resume", label: "Resume" },
-    { id: "contact", label: "Contact" },
-  ]
+    { id: 'home', label: 'Home' },
+    { id: 'about', label: 'About' },
+    { id: 'experience', label: 'Experience' },
+    { id: 'services', label: 'Services' },
+    { id: 'projects', label: 'Projects' },
+    { id: 'resume', label: 'Resume' },
+    { id: 'contact', label: 'Contact' },
+  ];
 
   const services = [
     {
       icon: <Server className="w-8 h-8" />,
-      title: "Backend Development",
-      description: "Scalable REST APIs with Node.js, Express, and modern frameworks",
-      gradient: "from-slate-600 to-slate-800",
+      title: 'Backend Development',
+      description:
+        'Scalable REST APIs with Node.js, Express, and modern frameworks',
+      gradient: 'from-slate-600 to-slate-800',
     },
     {
       icon: <Code className="w-8 h-8" />,
-      title: "API Integration",
-      description: "Seamless third-party integrations and comprehensive API testing",
-      gradient: "from-blue-600 to-slate-700",
+      title: 'API Integration',
+      description:
+        'Seamless third-party integrations and comprehensive API testing',
+      gradient: 'from-blue-600 to-slate-700',
     },
     {
       icon: <Bot className="w-8 h-8" />,
-      title: "Telegram Bots",
-      description: "Custom bots for automation, notifications, and user engagement",
-      gradient: "from-slate-700 to-blue-800",
+      title: 'Telegram Bots',
+      description:
+        'Custom bots for automation, notifications, and user engagement',
+      gradient: 'from-slate-700 to-blue-800',
     },
     {
       icon: <Zap className="w-8 h-8" />,
-      title: "Task Automation",
-      description: "Selenium scripts and JavaScript automation for repetitive tasks",
-      gradient: "from-slate-600 to-slate-800",
+      title: 'Task Automation',
+      description:
+        'Selenium scripts and JavaScript automation for repetitive tasks',
+      gradient: 'from-slate-600 to-slate-800',
     },
     {
       icon: <Database className="w-8 h-8" />,
-      title: "Database Design",
-      description: "Full-stack portals with secure backend architecture",
-      gradient: "from-blue-700 to-slate-800",
+      title: 'Database Design',
+      description: 'Full-stack portals with secure backend architecture',
+      gradient: 'from-blue-700 to-slate-800',
     },
     {
       icon: <Shield className="w-8 h-8" />,
-      title: "Security Testing",
-      description: "OWASP ZAP testing and ethical hacking security assessments",
-      gradient: "from-slate-700 to-slate-900",
+      title: 'Security Testing',
+      description: 'OWASP ZAP testing and ethical hacking security assessments',
+      gradient: 'from-slate-700 to-slate-900',
     },
-  ]
+  ];
 
   const projects = [
     {
-      name: "VPS King Portal",
+      name: 'VPS King Portal',
       description:
-        "VPS selling portal with integrated UPI payment gateway and admin panel for managing users, coupon codes, and VPS variants efficiently",
-      tech: ["Node.js", "MySQL", "Express.js", "UPI Gateway"],
-      github: "https://github.com/mohit-uchit/vpkingserver",
+        'VPS selling portal with integrated UPI payment gateway and admin panel for managing users, coupon codes, and VPS variants efficiently',
+      tech: ['Node.js', 'MySQL', 'Express.js', 'UPI Gateway'],
+      github: 'https://github.com/mohit-uchit/vpkingserver',
       icon: <ShoppingCart className="w-12 h-12" />,
-      color: "from-blue-500 to-slate-600",
+      color: 'from-blue-500 to-slate-600',
     },
     {
-      name: "Linode Manager Bot",
+      name: 'Linode Manager Bot',
       description:
-        "Automated Linode Cloud Management via Telegram Bot with proxy creation, SSH command execution, and cron job automation",
-      tech: ["Node.js", "Telegram API", "Linode API", "Redis"],
-      github: "https://github.com/mohit-uchit/linodeManagerBot",
+        'Automated Linode Cloud Management via Telegram Bot with proxy creation, SSH command execution, and cron job automation',
+      tech: ['Node.js', 'Telegram API', 'Linode API', 'Redis'],
+      github: 'https://github.com/mohit-uchit/linodeManagerBot',
       icon: <Bot className="w-12 h-12" />,
-      color: "from-slate-500 to-blue-600",
+      color: 'from-slate-500 to-blue-600',
     },
     {
-      name: "ServerSync Portal",
+      name: 'ServerSync Portal',
       description:
-        "Cloud-based VPS management system with API-based automation for VPS deployment, scaling, and monitoring",
-      tech: ["Node.js", "Express.js", "Cloud APIs", "MySQL"],
-      github: "https://github.com/mohit-uchit/serversync",
+        'Cloud-based VPS management system with API-based automation for VPS deployment, scaling, and monitoring',
+      tech: ['Node.js', 'Express.js', 'Cloud APIs', 'MySQL'],
+      github: 'https://github.com/mohit-uchit/serversync',
       icon: <Sync className="w-12 h-12" />,
-      color: "from-blue-600 to-slate-700",
+      color: 'from-blue-600 to-slate-700',
     },
     {
-      name: "Sarth Esports Platform",
+      name: 'Sarth Esports Platform',
       description:
-        "Competitive gaming platform for managing esports tournaments with real-time leaderboard and ranking system",
-      tech: ["TypeScript", "Vue.js", "Tailwind CSS", "Express.js"],
-      github: "https://github.com/mohit-uchit/sarthEsports",
+        'Competitive gaming platform for managing esports tournaments with real-time leaderboard and ranking system',
+      tech: ['TypeScript', 'Vue.js', 'Tailwind CSS', 'Express.js'],
+      github: 'https://github.com/mohit-uchit/sarthEsports',
       icon: <Gamepad2 className="w-12 h-12" />,
-      color: "from-slate-600 to-blue-700",
+      color: 'from-slate-600 to-blue-700',
     },
-  ]
+  ];
 
   const expertSkills = [
-    "JavaScript",
-    "C++",
-    "SQL",
-    "Node.js",
-    "Express.js",
-    "MongoDB",
-    "Sequelize",
-    "Redis",
-    "BullMQ",
-    "Git",
-    "GitHub",
-    "MySQL",
-    "Linux",
-    "AWS S3",
-    "OWASP ZAP",
-    "Postman",
-  ]
+    'JavaScript',
+    'C++',
+    'SQL',
+    'Node.js',
+    'Express.js',
+    'MongoDB',
+    'Sequelize',
+    'Redis',
+    'BullMQ',
+    'Git',
+    'GitHub',
+    'MySQL',
+    'Linux',
+    'AWS S3',
+    'OWASP ZAP',
+    'Postman',
+  ];
 
   const learningSkills = [
-    { name: "React.js", progress: 75, color: "bg-gradient-to-r from-blue-500 to-blue-600" },
-    { name: "TypeScript", progress: 65, color: "bg-gradient-to-r from-slate-500 to-blue-600" },
-    { name: "Vue.js", progress: 80, color: "bg-gradient-to-r from-blue-400 to-slate-600" },
-    { name: "Tailwind CSS", progress: 85, color: "bg-gradient-to-r from-slate-400 to-blue-500" },
-  ]
+    {
+      name: 'React.js',
+      progress: 75,
+      color: 'bg-gradient-to-r from-blue-500 to-blue-600',
+    },
+    {
+      name: 'TypeScript',
+      progress: 65,
+      color: 'bg-gradient-to-r from-slate-500 to-blue-600',
+    },
+    {
+      name: 'Vue.js',
+      progress: 80,
+      color: 'bg-gradient-to-r from-blue-400 to-slate-600',
+    },
+    {
+      name: 'Tailwind CSS',
+      progress: 85,
+      color: 'bg-gradient-to-r from-slate-400 to-blue-500',
+    },
+  ];
 
   const downloadResume = () => {
-    const link = document.createElement("a")
-    link.href = "/resume/Mohit_Uchit_Resume.pdf"
-    link.download = "Mohit_Uchit_Resume.pdf"
-    link.target = "_blank"
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
-  }
+    const link = document.createElement('a');
+    link.href = '/resume/Mohit_Uchit_Resume.pdf';
+    link.download = 'Mohit_Uchit_Resume.pdf';
+    link.target = '_blank';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = navItems.map((item) => document.getElementById(item.id))
-      const scrollPosition = window.scrollY + 100
+      const sections = navItems.map(item => document.getElementById(item.id));
+      const scrollPosition = window.scrollY + 100;
 
       for (let i = sections.length - 1; i >= 0; i--) {
-        const section = sections[i]
+        const section = sections[i];
         if (section && section.offsetTop <= scrollPosition) {
-          setActiveSection(navItems[i].id)
-          break
+          setActiveSection(navItems[i].id);
+          break;
         }
       }
-    }
+    };
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
+    const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
+      element.scrollIntoView({ behavior: 'smooth' });
     }
-    setIsMenuOpen(false)
-  }
+    setIsMenuOpen(false);
+  };
 
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
+    name: '',
+    email: '',
+    message: '',
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<
+    'idle' | 'success' | 'error'
+  >('idle');
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
       ...prev,
       [name]: value,
-    }))
-  }
+    }));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    setSubmitStatus("idle")
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
 
     try {
       const telegramMessage = `🚀 New Contact Form Submission
@@ -383,36 +417,36 @@ export default function Portfolio() {
 💬 Message: ${formData.message}
 
 📅 Time: ${new Date().toLocaleString()}
-🌐 From: Portfolio Website`
+🌐 From: Portfolio Website`;
 
       const response = await fetch(
         `https://api.telegram.org/bot8067555330:AAEB2Vmf4oXipUFozzqiYoyu6gd3vwXRIIY/sendMessage`,
         {
-          method: "POST",
+          method: 'POST',
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            chat_id: "6588896137",
+            chat_id: '6588896137',
             text: telegramMessage,
-            parse_mode: "HTML",
+            parse_mode: 'HTML',
           }),
         },
-      )
+      );
 
       if (response.ok) {
-        setSubmitStatus("success")
-        setFormData({ name: "", email: "", message: "" })
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', message: '' });
       } else {
-        throw new Error("Failed to send message")
+        throw new Error('Failed to send message');
       }
     } catch (error) {
-      console.error("Error sending message:", error)
-      setSubmitStatus("error")
+      console.error('Error sending message:', error);
+      setSubmitStatus('error');
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-x-hidden relative">
@@ -423,7 +457,7 @@ export default function Portfolio() {
           x: mousePosition.x - 8,
           y: mousePosition.y - 8,
         }}
-        transition={{ type: "spring", stiffness: 500, damping: 28 }}
+        transition={{ type: 'spring', stiffness: 500, damping: 28 }}
       />
 
       {/* Background Effects */}
@@ -439,7 +473,8 @@ export default function Portfolio() {
       <nav
         className="fixed top-0 w-full z-50 bg-slate-900/80 backdrop-blur-xl border-b border-slate-700/50"
         style={{
-          boxShadow: "0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)",
+          boxShadow:
+            '0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -453,13 +488,14 @@ export default function Portfolio() {
                 whileHover={{ scale: 1.1, rotateY: 10 }}
                 transition={{ duration: 0.3 }}
                 className="relative group"
-                style={{ transformStyle: "preserve-3d" }}
+                style={{ transformStyle: 'preserve-3d' }}
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-slate-400/20 rounded-full blur-md opacity-50 animate-pulse group-hover:opacity-75 transition-opacity"></div>
                 <div
                   className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-slate-600 shadow-2xl"
                   style={{
-                    boxShadow: "0 8px 25px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
+                    boxShadow:
+                      '0 8px 25px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
                   }}
                 >
                   <Image
@@ -476,28 +512,30 @@ export default function Portfolio() {
                 <span className="text-2xl font-bold bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
                   Mohit Uchit
                 </span>
-                <div className="text-xs text-slate-400 font-mono">Backend Engineer</div>
+                <div className="text-xs text-slate-400 font-mono">
+                  Backend Engineer
+                </div>
               </div>
             </motion.div>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex space-x-8">
-              {navItems.map((item) => (
+              {navItems.map(item => (
                 <motion.button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
                   className={`relative transition-all duration-300 px-4 py-2 rounded-lg ${
                     activeSection === item.id
-                      ? "text-white bg-slate-700/50 shadow-lg"
-                      : "text-slate-300 hover:text-white hover:bg-slate-800/30"
+                      ? 'text-white bg-slate-700/50 shadow-lg'
+                      : 'text-slate-300 hover:text-white hover:bg-slate-800/30'
                   }`}
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   style={{
                     boxShadow:
                       activeSection === item.id
-                        ? "0 4px 15px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)"
-                        : "none",
+                        ? '0 4px 15px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+                        : 'none',
                   }}
                 >
                   {item.label}
@@ -512,7 +550,8 @@ export default function Portfolio() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               style={{
-                boxShadow: "0 4px 15px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)",
+                boxShadow:
+                  '0 4px 15px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
               }}
             >
               {isMenuOpen ? <X /> : <Menu />}
@@ -525,12 +564,12 @@ export default function Portfolio() {
           {isMenuOpen && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
+              animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               className="md:hidden bg-slate-900/95 backdrop-blur-xl border-t border-slate-700/50"
             >
               <div className="px-4 py-2 space-y-2">
-                {navItems.map((item) => (
+                {navItems.map(item => (
                   <motion.button
                     key={item.id}
                     onClick={() => scrollToSection(item.id)}
@@ -547,24 +586,31 @@ export default function Portfolio() {
       </nav>
 
       {/* Enhanced Hero Section with 3D elements */}
-      <section id="home" className="relative min-h-screen flex items-center justify-center px-4">
+      <section
+        id="home"
+        className="relative min-h-screen flex items-center justify-center px-4"
+      >
         <CodeBlock />
 
         <div className="max-w-5xl mx-auto text-center z-10">
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+          >
             <motion.div
               initial={{ scale: 0.8, rotateX: 20 }}
               animate={{ scale: 1, rotateX: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               className="mb-8"
-              style={{ transformStyle: "preserve-3d" }}
+              style={{ transformStyle: 'preserve-3d' }}
             >
               <h1 className="text-6xl md:text-8xl font-bold mb-6 relative">
                 <span
                   className="bg-gradient-to-r from-white via-slate-200 to-slate-300 bg-clip-text text-transparent"
                   style={{
-                    textShadow: "0 4px 20px rgba(0, 0, 0, 0.5)",
-                    filter: "drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3))",
+                    textShadow: '0 4px 20px rgba(0, 0, 0, 0.5)',
+                    filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3))',
                   }}
                 >
                   Backend Engineer
@@ -578,8 +624,8 @@ export default function Portfolio() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
             >
-              <span className="text-blue-400">Cloud Automation</span> •{" "}
-              <span className="text-slate-300">Cybersecurity Expert</span> •{" "}
+              <span className="text-blue-400">Cloud Automation</span> •{' '}
+              <span className="text-slate-300">Cybersecurity Expert</span> •{' '}
               <span className="text-blue-300">API Specialist</span>
             </motion.p>
 
@@ -592,7 +638,8 @@ export default function Portfolio() {
               <div
                 className="bg-slate-900/60 backdrop-blur-sm p-6 rounded-2xl border border-slate-700/50 max-w-2xl mx-auto shadow-2xl"
                 style={{
-                  boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1)",
+                  boxShadow:
+                    '0 25px 50px -12px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
                 }}
               >
                 <TypewriterText />
@@ -605,12 +652,16 @@ export default function Portfolio() {
               transition={{ delay: 1 }}
               className="flex flex-col sm:flex-row gap-4 justify-center items-center"
             >
-              <motion.div whileHover={{ scale: 1.05, y: -5 }} whileTap={{ scale: 0.95 }}>
+              <motion.div
+                whileHover={{ scale: 1.05, y: -5 }}
+                whileTap={{ scale: 0.95 }}
+              >
                 <Button
-                  onClick={() => scrollToSection("contact")}
+                  onClick={() => scrollToSection('contact')}
                   className="bg-gradient-to-r from-blue-600 to-slate-700 hover:from-blue-700 hover:to-slate-800 text-white px-10 py-4 text-lg rounded-xl transition-all duration-300 shadow-2xl border border-slate-600/50 group"
                   style={{
-                    boxShadow: "0 8px 25px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
+                    boxShadow:
+                      '0 8px 25px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
                   }}
                 >
                   <Terminal className="w-5 h-5 mr-2 group-hover:animate-pulse" />
@@ -619,13 +670,17 @@ export default function Portfolio() {
                 </Button>
               </motion.div>
 
-              <motion.div whileHover={{ scale: 1.05, y: -5 }} whileTap={{ scale: 0.95 }}>
+              <motion.div
+                whileHover={{ scale: 1.05, y: -5 }}
+                whileTap={{ scale: 0.95 }}
+              >
                 <Button
-                  onClick={() => scrollToSection("projects")}
+                  onClick={() => scrollToSection('projects')}
                   variant="outline"
                   className="border-2 border-slate-600 text-slate-300 hover:bg-slate-800/50 hover:text-white px-10 py-4 text-lg rounded-xl transition-all duration-300 shadow-lg"
                   style={{
-                    boxShadow: "0 4px 15px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)",
+                    boxShadow:
+                      '0 4px 15px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
                   }}
                 >
                   <Globe className="w-5 h-5 mr-2" />
@@ -660,7 +715,9 @@ export default function Portfolio() {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <span className="bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">About Me</span>
+              <span className="bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
+                About Me
+              </span>
             </motion.h2>
 
             <div className="grid md:grid-cols-2 gap-16 items-center">
@@ -672,19 +729,26 @@ export default function Portfolio() {
                 viewport={{ once: true }}
               >
                 <p className="text-lg text-slate-300 mb-6 leading-relaxed">
-                  Backend Engineer with expertise in <span className="text-blue-400 font-semibold">Node.js</span>,{" "}
-                  <span className="text-slate-200 font-semibold">MySQL</span>, and{" "}
-                  <span className="text-blue-300 font-semibold">Redis</span>, delivering scalable APIs and optimizing
-                  system performance by up to <span className="text-green-400 font-bold">45%</span>. Currently working
-                  at Truckpedia, I specialize in building robust backend architectures, automating cloud operations, and
+                  Backend Engineer with expertise in{' '}
+                  <span className="text-blue-400 font-semibold">Node.js</span>,{' '}
+                  <span className="text-slate-200 font-semibold">MySQL</span>,
+                  and <span className="text-blue-300 font-semibold">Redis</span>
+                  , delivering scalable APIs and optimizing system performance
+                  by up to <span className="text-green-400 font-bold">45%</span>
+                  . Currently working at Truckpedia, I specialize in building
+                  robust backend architectures, automating cloud operations, and
                   implementing secure web systems.
                 </p>
                 <p className="text-lg text-slate-300 mb-8 leading-relaxed">
-                  My experience spans from developing marketing campaign systems and QR code tracking solutions to
-                  creating automated cloud management bots. I'm passionate about{" "}
-                  <span className="text-red-400 font-semibold">cybersecurity</span>, having organized webinars and
-                  developed penetration testing tools, while maintaining a focus on efficiency, scalability, and
-                  reliability in all projects.
+                  My experience spans from developing marketing campaign systems
+                  and QR code tracking solutions to creating automated cloud
+                  management bots. I'm passionate about{' '}
+                  <span className="text-red-400 font-semibold">
+                    cybersecurity
+                  </span>
+                  , having organized webinars and developed penetration testing
+                  tools, while maintaining a focus on efficiency, scalability,
+                  and reliability in all projects.
                 </p>
 
                 {/* Enhanced Stats with 3D effect */}
@@ -693,13 +757,16 @@ export default function Portfolio() {
                     whileHover={{ scale: 1.05, y: -5, rotateY: 5 }}
                     className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 p-6 rounded-xl border border-slate-700/50 backdrop-blur-sm shadow-2xl"
                     style={{
-                      boxShadow: "0 15px 35px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)",
-                      transformStyle: "preserve-3d",
+                      boxShadow:
+                        '0 15px 35px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
+                      transformStyle: 'preserve-3d',
                     }}
                   >
                     <div className="flex items-center space-x-3 mb-2">
                       <Lock className="w-6 h-6 text-green-400" />
-                      <span className="text-green-400 font-mono font-semibold">Security</span>
+                      <span className="text-green-400 font-mono font-semibold">
+                        Security
+                      </span>
                     </div>
                     <p className="text-3xl font-bold text-white mb-1">100%</p>
                     <p className="text-sm text-slate-400">Penetration Tests</p>
@@ -709,13 +776,16 @@ export default function Portfolio() {
                     whileHover={{ scale: 1.05, y: -5, rotateY: -5 }}
                     className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 p-6 rounded-xl border border-slate-700/50 backdrop-blur-sm shadow-2xl"
                     style={{
-                      boxShadow: "0 15px 35px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)",
-                      transformStyle: "preserve-3d",
+                      boxShadow:
+                        '0 15px 35px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
+                      transformStyle: 'preserve-3d',
                     }}
                   >
                     <div className="flex items-center space-x-3 mb-2">
                       <Activity className="w-6 h-6 text-blue-400" />
-                      <span className="text-blue-400 font-mono font-semibold">Performance</span>
+                      <span className="text-blue-400 font-mono font-semibold">
+                        Performance
+                      </span>
                     </div>
                     <p className="text-3xl font-bold text-white mb-1">45%</p>
                     <p className="text-sm text-slate-400">Optimization</p>
@@ -733,13 +803,14 @@ export default function Portfolio() {
                 <motion.div
                   whileHover={{ scale: 1.05, rotateY: 10 }}
                   className="relative group"
-                  style={{ transformStyle: "preserve-3d" }}
+                  style={{ transformStyle: 'preserve-3d' }}
                 >
                   {/* Enhanced 3D profile image */}
                   <div
                     className="relative w-80 h-80 rounded-2xl overflow-hidden border-4 border-slate-600 shadow-2xl group-hover:shadow-blue-500/20 transition-shadow duration-300"
                     style={{
-                      boxShadow: "0 25px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
+                      boxShadow:
+                        '0 25px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
                     }}
                   >
                     <Image
@@ -760,8 +831,9 @@ export default function Portfolio() {
                       className="absolute w-12 h-12 bg-slate-800/90 rounded-xl flex items-center justify-center border border-slate-600/50 backdrop-blur-sm shadow-xl"
                       style={{
                         top: `${20 + index * 20}%`,
-                        left: index % 2 === 0 ? "-10%" : "110%",
-                        boxShadow: "0 8px 25px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1)",
+                        left: index % 2 === 0 ? '-10%' : '110%',
+                        boxShadow:
+                          '0 8px 25px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
                       }}
                       animate={{
                         y: [0, -10, 0],
@@ -792,7 +864,8 @@ export default function Portfolio() {
                 <Card
                   className="bg-gradient-to-br from-slate-800/60 to-slate-900/60 backdrop-blur-md border-slate-700/50 hover:border-slate-600/50 transition-all duration-300 h-full shadow-2xl"
                   style={{
-                    boxShadow: "0 15px 35px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)",
+                    boxShadow:
+                      '0 15px 35px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
                   }}
                 >
                   <CardContent className="p-8">
@@ -812,7 +885,8 @@ export default function Portfolio() {
                           whileHover={{ scale: 1.1, y: -3, rotateX: 10 }}
                           className="px-4 py-2 bg-gradient-to-r from-slate-700/50 to-slate-800/50 rounded-full text-sm border border-slate-600/30 cursor-pointer font-mono hover:border-slate-500/50 transition-all duration-200 shadow-lg"
                           style={{
-                            boxShadow: "0 4px 15px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)",
+                            boxShadow:
+                              '0 4px 15px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
                           }}
                         >
                           {tech}
@@ -833,7 +907,8 @@ export default function Portfolio() {
                 <Card
                   className="bg-gradient-to-br from-slate-800/60 to-slate-900/60 backdrop-blur-md border-slate-700/50 hover:border-slate-600/50 transition-all duration-300 h-full shadow-2xl"
                   style={{
-                    boxShadow: "0 15px 35px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)",
+                    boxShadow:
+                      '0 15px 35px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
                   }}
                 >
                   <CardContent className="p-8">
@@ -851,7 +926,11 @@ export default function Portfolio() {
                           transition={{ duration: 0.5, delay: index * 0.1 }}
                           viewport={{ once: true }}
                         >
-                          <ProgressBar skill={skill.name} progress={skill.progress} color={skill.color} />
+                          <ProgressBar
+                            skill={skill.name}
+                            progress={skill.progress}
+                            color={skill.color}
+                          />
                         </motion.div>
                       ))}
                     </div>
@@ -868,7 +947,10 @@ export default function Portfolio() {
       </section>
 
       {/* Work Experience Section with 3D cards */}
-      <section id="experience" className="py-20 px-4 relative z-10 bg-gradient-to-b from-slate-900/20 to-transparent">
+      <section
+        id="experience"
+        className="py-20 px-4 relative z-10 bg-gradient-to-b from-slate-900/20 to-transparent"
+      >
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -891,12 +973,13 @@ export default function Portfolio() {
               <motion.div
                 whileHover={{ scale: 1.02, y: -5, rotateX: 2 }}
                 transition={{ duration: 0.3 }}
-                style={{ transformStyle: "preserve-3d" }}
+                style={{ transformStyle: 'preserve-3d' }}
               >
                 <Card
                   className="bg-gradient-to-br from-slate-800/60 to-slate-900/60 backdrop-blur-md border-slate-700/30 hover:border-slate-600/60 transition-all duration-300 overflow-hidden relative shadow-2xl"
                   style={{
-                    boxShadow: "0 25px 50px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)",
+                    boxShadow:
+                      '0 25px 50px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
                   }}
                 >
                   <motion.div
@@ -913,7 +996,9 @@ export default function Portfolio() {
                           <Server className="w-6 h-6 mr-3" />
                           Backend Engineer
                         </h3>
-                        <p className="text-xl text-white font-medium">Truckpedia</p>
+                        <p className="text-xl text-white font-medium">
+                          Truckpedia
+                        </p>
                         <p className="text-slate-400 flex items-center">
                           <Globe className="w-4 h-4 mr-2" />
                           Los Angeles, CA
@@ -926,29 +1011,34 @@ export default function Portfolio() {
                     <ul className="text-slate-300 space-y-3">
                       <li className="flex items-start">
                         <span className="text-blue-400 mr-3 mt-1">▶</span>
-                        Developed scalable solutions using MySQL, Sequelize, Node.js, Redis, and BullMQ
+                        Developed scalable solutions using MySQL, Sequelize,
+                        Node.js, Redis, and BullMQ
                       </li>
                       <li className="flex items-start">
                         <span className="text-blue-400 mr-3 mt-1">▶</span>
-                        Designed and implemented REST APIs and integrated third-party APIs for seamless system
-                        communication
+                        Designed and implemented REST APIs and integrated
+                        third-party APIs for seamless system communication
                       </li>
                       <li className="flex items-start">
                         <span className="text-blue-400 mr-3 mt-1">▶</span>
-                        Optimized cron jobs to automate scheduled tasks, enhancing operational efficiency
+                        Optimized cron jobs to automate scheduled tasks,
+                        enhancing operational efficiency
                       </li>
                       <li className="flex items-start">
                         <span className="text-blue-400 mr-3 mt-1">▶</span>
-                        Built a marketing campaign system to streamline promotional activities and customer engagement
+                        Built a marketing campaign system to streamline
+                        promotional activities and customer engagement
                       </li>
                       <li className="flex items-start">
                         <span className="text-blue-400 mr-3 mt-1">▶</span>
-                        Created a QR code system for transport managers to improve tracking and security
+                        Created a QR code system for transport managers to
+                        improve tracking and security
                       </li>
                       <li className="flex items-start">
                         <span className="text-green-400 mr-3 mt-1">★</span>
                         <span className="text-green-400 font-semibold">
-                          Reduced ORM-based database query complexity by 39%, boosting performance and scalability
+                          Reduced ORM-based database query complexity by 39%,
+                          boosting performance and scalability
                         </span>
                       </li>
                     </ul>
@@ -959,12 +1049,13 @@ export default function Portfolio() {
               <motion.div
                 whileHover={{ scale: 1.02, y: -5, rotateX: 2 }}
                 transition={{ duration: 0.3 }}
-                style={{ transformStyle: "preserve-3d" }}
+                style={{ transformStyle: 'preserve-3d' }}
               >
                 <Card
                   className="bg-gradient-to-br from-slate-800/60 to-slate-900/60 backdrop-blur-md border-slate-700/30 hover:border-slate-600/60 transition-all duration-300 overflow-hidden relative shadow-2xl"
                   style={{
-                    boxShadow: "0 25px 50px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)",
+                    boxShadow:
+                      '0 25px 50px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
                   }}
                 >
                   <motion.div
@@ -981,7 +1072,9 @@ export default function Portfolio() {
                           <Code className="w-6 h-6 mr-3" />
                           Backend Engineer
                         </h3>
-                        <p className="text-xl text-white font-medium">Freelance Projects</p>
+                        <p className="text-xl text-white font-medium">
+                          Freelance Projects
+                        </p>
                         <p className="text-slate-400 flex items-center">
                           <Wifi className="w-4 h-4 mr-2" />
                           Remote
@@ -994,22 +1087,25 @@ export default function Portfolio() {
                     <ul className="text-slate-300 space-y-3">
                       <li className="flex items-start">
                         <span className="text-blue-400 mr-3 mt-1">▶</span>
-                        Built a Linode Akamai Cloud Manager Bot using Node.js, automating proxy creation faster than the
-                        Akamai portal
+                        Built a Linode Akamai Cloud Manager Bot using Node.js,
+                        automating proxy creation faster than the Akamai portal
                       </li>
                       <li className="flex items-start">
                         <span className="text-green-400 mr-3 mt-1">★</span>
                         <span className="text-green-400 font-semibold">
-                          Improved backend efficiency by 45% through reduced code complexity and enhanced performance
+                          Improved backend efficiency by 45% through reduced
+                          code complexity and enhanced performance
                         </span>
                       </li>
                       <li className="flex items-start">
                         <span className="text-blue-400 mr-3 mt-1">▶</span>
-                        Integrated Redis to optimize cron jobs, significantly speeding up server operations
+                        Integrated Redis to optimize cron jobs, significantly
+                        speeding up server operations
                       </li>
                       <li className="flex items-start">
                         <span className="text-blue-400 mr-3 mt-1">▶</span>
-                        Designed backend architecture to balance complexity, scalability, and reliability
+                        Designed backend architecture to balance complexity,
+                        scalability, and reliability
                       </li>
                     </ul>
                   </CardContent>
@@ -1035,7 +1131,9 @@ export default function Portfolio() {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <span className="bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">Services</span>
+              <span className="bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
+                Services
+              </span>
             </motion.h2>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -1048,19 +1146,20 @@ export default function Portfolio() {
                   viewport={{ once: true }}
                   whileHover={{ scale: 1.05, y: -10, rotateY: 5 }}
                   className="group"
-                  style={{ transformStyle: "preserve-3d" }}
+                  style={{ transformStyle: 'preserve-3d' }}
                 >
                   <Card
                     className="h-full bg-gradient-to-br from-slate-800/60 to-slate-900/60 backdrop-blur-md border-slate-700/30 hover:border-slate-600/60 transition-all duration-300 relative overflow-hidden shadow-2xl"
                     style={{
-                      boxShadow: "0 15px 35px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)",
+                      boxShadow:
+                        '0 15px 35px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
                     }}
                   >
                     <CardContent className="p-8 relative z-10">
                       <motion.div
                         whileHover={{ rotate: 10, scale: 1.2, rotateY: 15 }}
                         className="text-blue-400 mb-6 group-hover:text-slate-200 transition-colors duration-300"
-                        style={{ transformStyle: "preserve-3d" }}
+                        style={{ transformStyle: 'preserve-3d' }}
                       >
                         {service.icon}
                       </motion.div>
@@ -1109,12 +1208,13 @@ export default function Portfolio() {
                   viewport={{ once: true }}
                   whileHover={{ scale: 1.03, y: -10, rotateY: 5 }}
                   className="group"
-                  style={{ transformStyle: "preserve-3d" }}
+                  style={{ transformStyle: 'preserve-3d' }}
                 >
                   <Card
                     className="h-full bg-gradient-to-br from-slate-800/60 to-slate-900/60 backdrop-blur-md border-slate-700/30 hover:border-slate-600/60 transition-all duration-300 overflow-hidden shadow-2xl"
                     style={{
-                      boxShadow: "0 25px 50px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)",
+                      boxShadow:
+                        '0 25px 50px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
                     }}
                   >
                     <div
@@ -1124,7 +1224,7 @@ export default function Portfolio() {
                         whileHover={{ rotate: 360, scale: 1.3, rotateY: 15 }}
                         transition={{ duration: 0.8 }}
                         className="text-white/90 z-10 relative"
-                        style={{ transformStyle: "preserve-3d" }}
+                        style={{ transformStyle: 'preserve-3d' }}
                       >
                         {project.icon}
                       </motion.div>
@@ -1163,27 +1263,32 @@ export default function Portfolio() {
                         {project.description}
                       </p>
                       <div className="flex flex-wrap gap-2 mb-6">
-                        {project.tech.map((tech) => (
+                        {project.tech.map(tech => (
                           <motion.span
                             key={tech}
                             whileHover={{ scale: 1.1, y: -2, rotateX: 10 }}
                             className="px-3 py-1 bg-slate-700/50 rounded-full text-xs text-slate-300 border border-slate-600/30 font-mono hover:border-slate-500/50 transition-all duration-200 shadow-lg"
                             style={{
-                              boxShadow: "0 4px 15px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)",
+                              boxShadow:
+                                '0 4px 15px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
                             }}
                           >
                             {tech}
                           </motion.span>
                         ))}
                       </div>
-                      <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }}>
+                      <motion.div
+                        whileHover={{ scale: 1.05, y: -2 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
                         <Button
                           variant="outline"
                           size="sm"
                           className="border-slate-600/50 text-slate-400 hover:bg-slate-700/50 hover:text-white bg-transparent group-hover:border-slate-500 transition-all duration-300 shadow-lg"
-                          onClick={() => window.open(project.github, "_blank")}
+                          onClick={() => window.open(project.github, '_blank')}
                           style={{
-                            boxShadow: "0 4px 15px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)",
+                            boxShadow:
+                              '0 4px 15px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
                           }}
                         >
                           <Github className="w-4 h-4 mr-2" />
@@ -1215,22 +1320,26 @@ export default function Portfolio() {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <span className="bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">Resume</span>
+              <span className="bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
+                Resume
+              </span>
             </motion.h2>
             <p className="text-xl text-slate-300 mb-12 max-w-2xl mx-auto leading-relaxed">
-              Download my complete resume to learn more about my experience, skills, and certifications.
+              Download my complete resume to learn more about my experience,
+              skills, and certifications.
             </p>
             <motion.div
               whileHover={{ scale: 1.05, y: -5, rotateY: 5 }}
               whileTap={{ scale: 0.95 }}
               className="inline-block"
-              style={{ transformStyle: "preserve-3d" }}
+              style={{ transformStyle: 'preserve-3d' }}
             >
               <Button
                 onClick={downloadResume}
                 className="bg-gradient-to-r from-blue-600 to-slate-700 hover:from-blue-700 hover:to-slate-800 text-white px-12 py-4 text-lg rounded-xl transition-all duration-300 shadow-2xl border border-slate-600/50 group"
                 style={{
-                  boxShadow: "0 15px 35px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
+                  boxShadow:
+                    '0 15px 35px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
                 }}
               >
                 <Download className="w-6 h-6 mr-3 group-hover:animate-bounce" />
@@ -1266,12 +1375,13 @@ export default function Portfolio() {
               <motion.div
                 whileHover={{ scale: 1.03, y: -5, rotateY: 5 }}
                 transition={{ duration: 0.3 }}
-                style={{ transformStyle: "preserve-3d" }}
+                style={{ transformStyle: 'preserve-3d' }}
               >
                 <Card
                   className="bg-gradient-to-br from-slate-800/60 to-slate-900/60 backdrop-blur-md border-slate-700/30 hover:border-slate-600/60 transition-all duration-300 h-full shadow-2xl"
                   style={{
-                    boxShadow: "0 15px 35px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)",
+                    boxShadow:
+                      '0 15px 35px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
                   }}
                 >
                   <CardContent className="p-8">
@@ -1280,8 +1390,12 @@ export default function Portfolio() {
                       Education
                     </h3>
                     <div className="space-y-4">
-                      <p className="text-xl text-white font-medium">B.Tech - Computer Science and Engineering</p>
-                      <p className="text-lg text-slate-300">IITM (DCRUST Murthal)</p>
+                      <p className="text-xl text-white font-medium">
+                        B.Tech - Computer Science and Engineering
+                      </p>
+                      <p className="text-lg text-slate-300">
+                        IITM (DCRUST Murthal)
+                      </p>
                       <p className="text-slate-400 flex items-center">
                         <Globe className="w-4 h-4 mr-2" />
                         Murthal, Haryana
@@ -1294,12 +1408,13 @@ export default function Portfolio() {
               <motion.div
                 whileHover={{ scale: 1.03, y: -5, rotateY: -5 }}
                 transition={{ duration: 0.3 }}
-                style={{ transformStyle: "preserve-3d" }}
+                style={{ transformStyle: 'preserve-3d' }}
               >
                 <Card
                   className="bg-gradient-to-br from-slate-800/60 to-slate-900/60 backdrop-blur-md border-slate-700/30 hover:border-slate-600/60 transition-all duration-300 h-full shadow-2xl"
                   style={{
-                    boxShadow: "0 15px 35px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)",
+                    boxShadow:
+                      '0 15px 35px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
                   }}
                 >
                   <CardContent className="p-8">
@@ -1361,8 +1476,9 @@ export default function Portfolio() {
                   Let's Work Together
                 </h3>
                 <p className="text-base sm:text-lg text-slate-300 mb-8 sm:mb-10 leading-relaxed">
-                  Ready to build something amazing? I'm available for freelance projects, consulting, and full-time
-                  opportunities. Let's discuss how I can help bring your backend vision to life.
+                  Ready to build something amazing? I'm available for freelance
+                  projects, consulting, and full-time opportunities. Let's
+                  discuss how I can help bring your backend vision to life.
                 </p>
 
                 <div className="space-y-4 sm:space-y-6">
@@ -1371,7 +1487,8 @@ export default function Portfolio() {
                     whileHover={{ x: 10, scale: 1.02, rotateY: 5 }}
                     className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 p-3 sm:p-4 bg-slate-800/30 rounded-lg border border-slate-700/20 hover:border-slate-600/40 transition-all duration-300 cursor-pointer shadow-lg"
                     style={{
-                      boxShadow: "0 4px 15px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)",
+                      boxShadow:
+                        '0 4px 15px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
                     }}
                   >
                     <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-blue-400 flex-shrink-0" />
@@ -1384,11 +1501,14 @@ export default function Portfolio() {
                     whileHover={{ x: 10, scale: 1.02, rotateY: 5 }}
                     className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 p-3 sm:p-4 bg-slate-800/30 rounded-lg border border-slate-700/20 hover:border-slate-600/40 transition-all duration-300 cursor-pointer shadow-lg"
                     style={{
-                      boxShadow: "0 4px 15px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)",
+                      boxShadow:
+                        '0 4px 15px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
                     }}
                   >
                     <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-blue-400 flex-shrink-0" />
-                    <span className="text-slate-300 font-mono text-sm sm:text-lg">+91-9996974063</span>
+                    <span className="text-slate-300 font-mono text-sm sm:text-lg">
+                      +91-9996974063
+                    </span>
                   </motion.a>
                   <motion.a
                     href="https://www.linkedin.com/in/mohituchit"
@@ -1397,7 +1517,8 @@ export default function Portfolio() {
                     whileHover={{ x: 10, scale: 1.02, rotateY: 5 }}
                     className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 p-3 sm:p-4 bg-slate-800/30 rounded-lg border border-slate-700/20 hover:border-slate-600/40 transition-all duration-300 cursor-pointer shadow-lg"
                     style={{
-                      boxShadow: "0 4px 15px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)",
+                      boxShadow:
+                        '0 4px 15px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
                     }}
                   >
                     <Linkedin className="w-5 h-5 sm:w-6 sm:h-6 text-blue-400 flex-shrink-0" />
@@ -1412,7 +1533,8 @@ export default function Portfolio() {
                     whileHover={{ x: 10, scale: 1.02, rotateY: 5 }}
                     className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 p-3 sm:p-4 bg-slate-800/30 rounded-lg border border-slate-700/20 hover:border-slate-600/40 transition-all duration-300 cursor-pointer shadow-lg"
                     style={{
-                      boxShadow: "0 4px 15px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)",
+                      boxShadow:
+                        '0 4px 15px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
                     }}
                   >
                     <Github className="w-5 h-5 sm:w-6 sm:h-6 text-blue-400 flex-shrink-0" />
@@ -1432,7 +1554,8 @@ export default function Portfolio() {
                 <Card
                   className="bg-gradient-to-br from-slate-800/60 to-slate-900/60 backdrop-blur-md border-slate-700/30 hover:border-slate-600/50 transition-all duration-300 shadow-2xl"
                   style={{
-                    boxShadow: "0 25px 50px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)",
+                    boxShadow:
+                      '0 25px 50px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
                   }}
                 >
                   <CardContent className="p-8">
@@ -1446,7 +1569,7 @@ export default function Portfolio() {
                           required
                           className="w-full bg-slate-800/50 border border-slate-700/30 text-white placeholder-slate-400 font-mono text-lg p-4 rounded-lg focus:border-blue-400 focus:outline-none transition-all duration-300 shadow-inner"
                           style={{
-                            boxShadow: "inset 0 2px 4px rgba(0, 0, 0, 0.3)",
+                            boxShadow: 'inset 0 2px 4px rgba(0, 0, 0, 0.3)',
                           }}
                         />
                       </motion.div>
@@ -1460,7 +1583,7 @@ export default function Portfolio() {
                           required
                           className="w-full bg-slate-800/50 border border-slate-700/30 text-white placeholder-slate-400 font-mono text-lg p-4 rounded-lg focus:border-blue-400 focus:outline-none transition-all duration-300 shadow-inner"
                           style={{
-                            boxShadow: "inset 0 2px 4px rgba(0, 0, 0, 0.3)",
+                            boxShadow: 'inset 0 2px 4px rgba(0, 0, 0, 0.3)',
                           }}
                         />
                       </motion.div>
@@ -1474,17 +1597,21 @@ export default function Portfolio() {
                           required
                           className="w-full bg-slate-800/50 border border-slate-700/30 text-white placeholder-slate-400 font-mono text-lg p-4 rounded-lg focus:border-blue-400 focus:outline-none transition-all duration-300 resize-none shadow-inner"
                           style={{
-                            boxShadow: "inset 0 2px 4px rgba(0, 0, 0, 0.3)",
+                            boxShadow: 'inset 0 2px 4px rgba(0, 0, 0, 0.3)',
                           }}
                         />
                       </motion.div>
-                      <motion.div whileHover={{ scale: 1.02, y: -2 }} whileTap={{ scale: 0.98 }}>
+                      <motion.div
+                        whileHover={{ scale: 1.02, y: -2 }}
+                        whileTap={{ scale: 0.98 }}
+                      >
                         <Button
                           type="submit"
                           disabled={isSubmitting}
                           className="w-full bg-gradient-to-r from-blue-600 to-slate-700 hover:from-blue-700 hover:to-slate-800 text-white py-4 text-lg font-semibold disabled:opacity-50 transition-all duration-300 shadow-2xl border border-slate-600/50"
                           style={{
-                            boxShadow: "0 8px 25px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
+                            boxShadow:
+                              '0 8px 25px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
                           }}
                         >
                           <Terminal className="w-5 h-5 mr-3" />
@@ -1492,20 +1619,24 @@ export default function Portfolio() {
                             <>
                               <motion.div
                                 animate={{ rotate: 360 }}
-                                transition={{ duration: 1, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+                                transition={{
+                                  duration: 1,
+                                  repeat: Number.POSITIVE_INFINITY,
+                                  ease: 'linear',
+                                }}
                                 className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full mr-3"
                               />
                               Sending...
                             </>
                           ) : (
-                            "Send Message"
+                            'Send Message'
                           )}
                           <Sparkles className="w-5 h-5 ml-3" />
                         </Button>
                       </motion.div>
 
                       <AnimatePresence>
-                        {submitStatus === "success" && (
+                        {submitStatus === 'success' && (
                           <motion.div
                             initial={{ opacity: 0, y: 10, scale: 0.8 }}
                             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -1516,7 +1647,7 @@ export default function Portfolio() {
                           </motion.div>
                         )}
 
-                        {submitStatus === "error" && (
+                        {submitStatus === 'error' && (
                           <motion.div
                             initial={{ opacity: 0, y: 10, scale: 0.8 }}
                             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -1546,8 +1677,7 @@ export default function Portfolio() {
             viewport={{ once: true }}
           >
             <p className="text-slate-400 font-mono text-sm sm:text-lg mb-4 px-4">
-              © 2024 Mohit Uchit. Built with <span className="text-blue-400">Next.js</span> &{" "}
-              <span className="text-slate-300">Tailwind CSS</span>.
+              © 2024 Mohit Uchit.
             </p>
             <div className="flex justify-center space-x-4 sm:space-x-6">
               <motion.a
@@ -1566,7 +1696,10 @@ export default function Portfolio() {
               >
                 <Linkedin className="w-5 h-5 sm:w-6 sm:h-6 text-slate-400 hover:text-blue-400 transition-colors cursor-pointer" />
               </motion.a>
-              <motion.a href="mailto:official.mohit.uchit@gmail.com" whileHover={{ scale: 1.2, rotate: 5, y: -3 }}>
+              <motion.a
+                href="mailto:official.mohit.uchit@gmail.com"
+                whileHover={{ scale: 1.2, rotate: 5, y: -3 }}
+              >
                 <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-slate-400 hover:text-blue-400 transition-colors cursor-pointer" />
               </motion.a>
             </div>
@@ -1574,5 +1707,5 @@ export default function Portfolio() {
         </div>
       </footer>
     </div>
-  )
+  );
 }
