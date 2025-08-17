@@ -735,9 +735,9 @@ export default function Portfolio() {
                   and <span className="text-blue-300 font-semibold">Redis</span>
                   , delivering scalable APIs and optimizing system performance
                   by up to <span className="text-green-400 font-bold">45%</span>
-                  . Currently working at Truckpedia, I specialize in building
-                  robust backend architectures, automating cloud operations, and
-                  implementing secure web systems.
+                  . I worked at Truckpedia until July 2024, specializing in
+                  building robust backend architectures, automating cloud
+                  operations, and implementing secure web systems.
                 </p>
                 <p className="text-lg text-slate-300 mb-8 leading-relaxed">
                   My experience spans from developing marketing campaign systems
@@ -1005,7 +1005,7 @@ export default function Portfolio() {
                         </p>
                       </div>
                       <span className="text-blue-400 font-medium font-mono bg-blue-500/10 px-4 py-2 rounded-full border border-blue-500/30 shadow-lg">
-                        Oct 2023 - Present
+                        Oct 2023 - Jul 2025
                       </span>
                     </div>
                     <ul className="text-slate-300 space-y-3">
